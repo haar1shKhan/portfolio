@@ -1,0 +1,137 @@
+.services-section {
+  padding: 1rem 2rem;
+  background-color: #121218;
+  color: #fff;
+  height: 100%;
+}
+
+.services-wrapper {
+  max-width: 5000px;
+  margin: 0 auto;
+}
+
+.services-heading {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.services-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #ccc;
+}
+
+.services-stage {
+  padding: 5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+}
+
+.service-card {
+  background: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0; /* initial for animation */
+  transform: translateY(80px); /* initial for animation */
+  width: 60%; /* make card narrower so it doesn't stretch full width */
+}
+
+.service-card.left {
+  align-self: flex-start; /* left side */
+}
+
+.service-card.right {
+  align-self: flex-end; /* right side */
+}
+
+.service-content h3 {
+  color: #ff7f1a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-content p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.services-section {
+  position: relative; /* needed for absolute SVG */
+}
+
+.services-line {
+  position: absolute;
+  top: 8%;
+  left: 50%; /* center the line */
+  transform: translateX(-50%);
+  height: 100%;
+  z-index: 0; /* behind cards */
+}
+
+.service-card {
+  position: relative;
+  z-index: 1; /* above the line */
+}
+/* ============================= */
+/* RESPONSIVE – TABLET & MOBILE  */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .services-wrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .service-card {
+    width: 75%;
+  }
+
+  .services-stage {
+    gap: 10rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-heading {
+    font-size: 2rem;
+  }
+
+  .services-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .services-stage {
+    gap: 6rem;
+    padding: 3rem 0;
+  }
+
+  .service-card {
+    width: 100%;
+    align-self: center !important;
+    padding: 1.5rem;
+    transform: none !important;
+  }
+
+  .services-line {
+    display: none; /* hide SVG line on mobile for clarity */
+  }
+}
+
+@media (max-width: 480px) {
+  .services-heading {
+    font-size: 1.7rem;
+  }
+
+  .service-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-content p {
+    font-size: 0.95rem;
+  }
+}
