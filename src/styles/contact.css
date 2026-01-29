@@ -39,7 +39,7 @@
   text-decoration: none;
   display: inline-block;
   transition: transform 0.25s ease, box-shadow 0.25s ease,
-    background-color 0.25s ease;
+  background-color 0.25s ease;
 }
 
 .contact-actions .btn.primary:hover {
@@ -70,7 +70,7 @@
 /* ----------------------------- */
 @media (max-width: 768px) {
   .contact-section {
-    padding: 70px 1.5rem;
+    padding: 40px 1.5rem;
   }
 
   .contact-section h2 {
@@ -92,7 +92,7 @@
 /* ----------------------------- */
 @media (max-width: 480px) {
   .contact-section {
-    padding: 60px 1rem;
+    padding: 40px 1rem;
   }
 
   .contact-section h2 {

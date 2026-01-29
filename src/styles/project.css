@@ -49,7 +49,7 @@ section{
 }
 
 .project-img {
-    width: 120%;
+    width: 130%;
     aspect-ratio: 16/9;
     opacity: 0.5;
     transition: all 0.3s ease;
@@ -86,5 +86,38 @@ section{
 
     .project-names p{
         color: #fff !important;
+    }
+}
+@media(max-width:600px){
+    .project-img {
+        width: 250%;
+        aspect-ratio: 16/9;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .project-images {
+        position:absolute;
+        top:0;
+        left: 20%;
+        transform: translate(-50%);
+        width: 35%;
+        padding: 50svh 0;
+        display: flex;
+        flex-direction: column;
+        gap:4rem;
+        z-index: -1;
+    }
+    .project-names p{
+        font-size: 1rem;
+        color: #c7c5c5;
+        transition: color 0.3 ease;
+    }
+
+    .project-index h1{
+       color: #FF8A1F;
+        font-size: 1.5rem;
+
     }
 }

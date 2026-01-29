@@ -7,8 +7,8 @@
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
-    margin-bottom: 40px; /* prevents overlap on zoom */
-   overflow: visible;  /* crucial: ensures buttons are not clipped */
+  margin-bottom: 70px; /* prevents overlap on zoom */
+  overflow: visible;  /* crucial: ensures buttons are not clipped */
 }
 
 /* Hero image */
