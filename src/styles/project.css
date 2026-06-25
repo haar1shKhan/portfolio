@@ -26,6 +26,7 @@ section{
     height: 100svh;
     padding: 2rem;
     overflow:hidden;
+    background: #F5F0E8 ;
 }
 
 .intro .outro{
@@ -66,12 +67,13 @@ section{
 }
 
 .project-names p{
-    color: #c7c5c5;
+    /* color: #c7c5c5; */
+    color: #1A1A1A;
     transition: color 0.3 ease;
 }
 
 .project-index h1{
-    color: #FF8A1F;
+    color: #FE6523;
 }
 .project-index h1,.project-images,.project-names p{
     will-change: transform;
@@ -80,12 +82,12 @@ section{
 
 @media(max-width:1000px){
     .project-images{
-        width: calc(100%-4rem);
+        width: calc(100% - 4rem);
         gap:25svh
     }
 
     .project-names p{
-        color: #fff !important;
+        /* color: #fff !important; */
     }
 }
 @media(max-width:600px){
@@ -111,8 +113,8 @@ section{
     }
     .project-names p{
         font-size: 1rem;
-        color: #c7c5c5;
-        transition: color 0.3 ease;
+        /* color: #c7c5c5; */
+        transition: color 0.3s ease;
     }
 
     .project-index h1{

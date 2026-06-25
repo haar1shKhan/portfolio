@@ -1,72 +1,53 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
-import "../styles/service.css";
+import "../styles/service2.css";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
     title: "Web Design",
     description:
       "Modern, clean, and conversion-focused UI/UX designs that make brands stand out.",
+    img: "/webdesign.png",
   },
   {
     title: "Web Development",
     description:
       "Fast, scalable, and maintainable websites built with modern technologies.",
+    img: "/webdev.png",
   },
-  {
-    title: "Meta Ads",
-    description:
-      "High-performing Facebook & Instagram ad campaigns driven by data.",
-  },
+  // {
+  //   title: "Meta Ads",
+  //   description:
+  //     "High-performing Facebook & Instagram ad campaigns driven by data.",
+  //   img: null,
+  // },
   {
     title: "SEO",
     description:
       "Search-optimized websites designed to rank, convert, and scale organically.",
+    img: null,
   },
 ];
 
-const Service = () => {
-  const cardsRef = useRef([]);
+const Service2 = () => {
+
+const cardsRef = useRef([]);
   const lineRef = useRef(null);
   const [svgContent, setSvgContent] = useState(null);
 
-  // Initialize Lenis for smooth scroll
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2, // smooth scroll duration
-      easing: (t) => t, // easing function
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Tell ScrollTrigger to update on Lenis scroll
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Cleanup
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
 
   // Animate service cards
   useEffect(() => {
     const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card) => {
+      cardsRef.current.forEach((card,index) => {
         gsap.fromTo(
           card,
           { opacity: 0, y: 80 },
           {
             opacity: 1,
             y: 0,
+            rotate: `${index%2==0?5:-5}`,
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
@@ -84,7 +65,7 @@ const Service = () => {
 
   // Load SVG from public folder
   useEffect(() => {
-    fetch("/line.svg")
+    fetch("/line5.svg")
       .then((res) => res.text())
       .then((data) => setSvgContent(data));
   }, []);
@@ -115,12 +96,12 @@ const Service = () => {
   }, [svgContent]);
 
   return (
-    <section className="services-section" id="services">
+       <section className="services-section" id="services">
       <div className="services-wrapper">
-        <h2 className="services-heading">What I Bring to the Table</h2>
         <p className="services-subtitle">
-          I mix creativity and strategy to help your business work smarter.
+          <span>What I do</span>
         </p>
+        <h2 className="services-heading">Capabilities that <span>move</span> things.</h2>
 
         {/* SVG line injected inline */}
         {svgContent && (
@@ -139,15 +120,18 @@ const Service = () => {
               ref={(el) => (cardsRef.current[index] = el)}
             >
               <div className="service-content">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+                <img src={service.img || "/demo.png"} alt="" />
+                <div className="card-text">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Service;
+export default Service2

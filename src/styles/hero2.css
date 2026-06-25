@@ -1,0 +1,259 @@
+/* Hero.css */
+
+.hero {
+  width: 100%;
+  /* max-height: 800px; */
+  max-width: 1400px;
+  min-height: 100%;
+  /* background: #050505; */
+  background: #F5F0E8 ;
+  /* color: white; */
+  padding: 7rem 4rem 0rem 4rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+
+
+
+/* HERO CONTENT */
+
+.hero-content {
+  width: 100%;
+  display: flex;
+  flex:1;
+  justify-content: space-between;
+}
+
+
+/* Hero left */
+
+.hero-left {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-left h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-left h1 span {
+  color: #FF4D00 ;
+}
+
+.hero-left h2{
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  width: 60%;
+}
+
+.hero-left p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  width: 60%;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.view-projects {
+  background: #FF4D00 ;
+  color: #050505;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+}
+
+.btn{
+  border:#FF4D00 solid 2px;
+  background: transparent;
+  color: #FF4D00;
+  border-radius: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Hero right */
+
+.hero-right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  position: relative;
+  
+}
+
+.hero-right img {
+  width: 100%;
+  height: auto;
+}
+
+.semi-circle {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: #FF4D00 ;
+  bottom: -220px;
+  right: -50px;
+}
+
+.semi-circle-stroke{
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  /* background: #FE9937; */
+  border: 2px solid #FF4D00 ;
+  bottom: -259px;
+    right: -100px;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 6rem 2rem 0;
+  }
+
+  .hero-left h1 {
+    font-size: 3rem;
+  }
+
+  .hero-left h2,
+  .hero-left p {
+    width: 90%;
+  }
+  
+  .semi-circle {
+    width: 600px;
+    height: 500px;
+    bottom: -150px;
+    right: -60px;
+  }
+
+  .semi-circle-stroke {
+    width: 690px;
+    height: 600px;
+    bottom: -190px;
+    right: -100px;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 850px) {
+  .hero {
+    padding: 5rem 1.5rem 0;  
+    min-height: 700px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-left {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-left h2 {
+    width: 100%;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-left p {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-right {
+    min-height: 350px;
+    scale: 1.8;
+  }
+
+  .semi-circle {
+    width: 350px;
+    height: 350px;
+    bottom: -60px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .semi-circle-stroke {
+    width: 420px;
+    height: 420px;
+    bottom: -80px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  
+}
+
+/* =========================
+   Small phones
+========================= */
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 1rem 0;
+    /* max-height: 610px; */
+  }
+
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+
+  .hero-left h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-left p {
+    font-size: 0.9rem;
+  }
+
+  .hero-right {
+    scale: 1.5;
+  }
+
+  .semi-circle {
+    width: 280px;
+    height: 280px;
+    bottom: -50px;
+  }
+
+  .semi-circle-stroke {
+    width: 340px;
+    height: 340px;
+    bottom: -80px;
+  }
+
+ 
+}

@@ -1,0 +1,185 @@
+/* ── Contact Section ── */
+.contact-section {
+  position: relative;
+  padding: 120px 2rem 160px;
+  /* background: #050505; */
+  background: #F5F0E8;
+  height: 920px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  z-index: 1;
+}
+
+/* ── Eyebrow ── */
+.contact-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+/* ── Wrapper card ── */
+.contact-wrapper {
+  /* background: #111111; */
+  background: #1F1409;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  padding: clamp(48px, 8vw, 96px) clamp(32px, 6vw, 80px);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Ambient glow top-right */
+.contact-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 153, 55, 0.06) 0%, transparent 65%);
+  top: -150px;
+  right: -150px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Label ── */
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #FE6523;
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-label-line {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: #FE6523;
+  opacity: 0.45;
+}
+
+/* ── Heading ── */
+.contact-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  max-width: 720px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-heading em {
+  color: #FE6523;
+  font-style: italic;
+}
+
+/* ── Subline ── */
+.contact-subline {
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 400px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CTA ── */
+.contact-actions {
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-actions .btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #FE6523;
+  color: #050505;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-actions .btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(254, 153, 55, 0.28);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: 100px 2rem 120px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 1.5rem 100px;
+  }
+
+  .contact-heading {
+    font-size: 2.2rem;
+  }
+
+  .contact-actions .btn.primary {
+    padding: 14px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Small phones ── */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 1rem 80px;
+  }
+
+  .contact-heading {
+    font-size: 1.9rem;
+  }
+
+  .contact-subline {
+    font-size: 0.9rem;
+  }
+
+  .contact-actions .btn.primary {
+    width: 100%;
+    justify-content: center;
+  }
+}

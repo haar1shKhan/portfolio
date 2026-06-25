@@ -1,0 +1,197 @@
+.about{
+    /* background-color: #050505 !important; */
+    background: #F5F0E8 ;
+    padding: 5rem;
+    min-height: max-content;
+    height: 100%;
+}
+
+.about-content {
+  padding: 4rem 0;
+  /* color: #050505; */
+
+}
+
+.about-content h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+
+
+.about-content p{
+    margin-top: 45px;
+}
+
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6rem;
+  margin-top: 4rem;
+}
+
+.stats h3{
+  font-size: 3.5rem;
+  color: #FF4D00 ;
+  font-weight: bolder;
+}
+
+.stat {
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 250px;
+}
+
+.desk{
+  width: 600px;
+  /* max-width: 500px; */
+  /* justify-self: center; */
+  display: block;
+  border-radius: 18px;
+  margin: 3rem auto 0;
+}
+
+.paragraph{
+  width: 55%;
+  text-align: justify;
+  margin-left: auto;
+  /* margin-top: 15rem !important; */
+}
+
+/* =========================
+   Large Tablets
+========================= */
+@media (max-width: 1024px) {
+  .about {
+    padding: 4rem 3rem;
+  }
+
+  .about-content {
+    padding: 3rem 0;
+  }
+
+  .about-content h2 {
+    font-size: 3rem;
+  }
+
+  .stats {
+    gap: 3rem;
+    justify-content: center;
+  }
+
+  .stats h3 {
+    font-size: 3rem;
+  }
+
+  .stat {
+    min-width: 220px;
+  }
+}
+
+/* =========================
+   Tablets & Mobile
+========================= */
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 2rem
+  }
+
+  .about-content {
+    padding: 2rem 0;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .about-content p {
+    margin-top: 5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .stats {
+    margin-top: 5rem;
+    gap: 4rem;
+    justify-content: center;
+  }
+
+  .stats h3 {
+    font-size: 2.75rem;
+  }
+
+  .stat {
+    min-width: 180px;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 480px) {
+  .about {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-content {
+    padding: 1.5rem 0;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .about-content p {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .stats h3 {
+    font-size: 2.5rem;
+  }
+
+  .stat {
+    min-width: auto;
+    width: 100%;
+    max-width: 300px;
+  }
+  .desk{
+  width: 350px !important;
+  /* max-width: 500px; */
+  /* justify-self: center; */
+  display: block;
+  border-radius: 18px;
+  margin: 3rem auto 0;
+}
+}
+
+/* =========================
+   Small Phones
+========================= */
+@media (max-width: 360px) {
+  .about {
+    padding: 2rem 1rem;
+  }
+
+
+
+  .about-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .stats h3 {
+    font-size: 2rem;
+  }
+}

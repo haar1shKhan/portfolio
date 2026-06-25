@@ -130,7 +130,7 @@ const Spotlight = () => {
   }, []);
 
   return (
-    <div className="spotlight-wrapper">
+    <div id="portfolio" className="spotlight-wrapper">
       <section className="spotlight" ref={spotlightRef}>
         <div className="project-index">
           <h1 ref={projectIndexRef}>01/04</h1>

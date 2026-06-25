@@ -1,0 +1,163 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FF4D00 ;
+  letter-spacing: 0.05em;
+}
+
+
+
+/* nav-actions stays above overlay */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2000;
+}
+
+.btn {
+  padding: 12px 22px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background-color: #FF4D00 ;
+  color: #0f0f12;
+}
+
+.btn.primary:hover {
+  opacity: 0.85;
+}
+
+.btn.primary.menu-open {
+  background-color: #fff;
+  color: #0f0f12;
+  transition: background-color 0.3s ease 0.4s, color 0.3s ease 0.4s;
+}
+
+/* hamburger */
+.hamburger {
+  width: 35px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+.hamburger span {
+  height: 3px;
+  border-radius: 20px;
+  background-color: #1F1409;
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1),
+              opacity 0.3s ease;
+}
+
+/* X icon when open */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* wrapper */
+.menu-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.circle-bg {
+  position: fixed;
+  border-radius: 50%;
+  background: #ff4d00;
+  z-index: 998;
+  pointer-events: none;
+  /* No width, height, top, right, translate, or transform here.
+     GSAP sets all of that dynamically via getBoundingClientRect. */
+}
+
+/* menu content */
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+}
+
+
+
+.fullscreen-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+/* ── Split link ── */
+.fullscreen-menu a {
+  color: white;
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+
+.char-wrap {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: top;
+}
+
+.char-ghost {
+  display: block;
+  visibility: hidden;
+  line-height: inherit;
+  white-space: pre;
+}
+
+.char-top,
+.char-bot {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: inherit;
+  white-space: pre;
+}
+
+.char-top { clip-path: inset(0 0 50% 0); }
+.char-bot { clip-path: inset(50% 0 0 0); }
