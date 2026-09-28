@@ -11,6 +11,7 @@ const projects = [
   { name: "Bluedart Express Dubai", text:"Business Website", img: "./project/blue-dart-express-dubai.png", link: "https://www.bluedartexpress.ae/" },
   { name: "Atelier Vayu", text:"E-commerce Platform", img: "./project/atelier-vayu.png", link: "https://atelier-vayu.vercel.app/" },
   { name: "Ansee Beauty", text:"Human Resources Management", img: "./project/ansee-beauty.png", link: null },
+  { name: "Nasar Al Masa", text:"Business Website", img: "./project/nasar-al-masa.png", link: "https://nasar-al-masa.vercel.app/" },
   { name: "Velvet Pour", text:"Mocktail Bar Website", img: "./project/velvet-pour.png", link: "https://valvet-mojito.vercel.app/" },
 ];
 
