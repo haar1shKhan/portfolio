@@ -44,60 +44,54 @@ export default function LoadingScreen({ onComplete }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
-    const startTime = Date.now();
+  let cancelled = false;
+  let finished = false;
+  const startTime = Date.now();
 
-    const images = Array.from(document.querySelectorAll("img"));
-    const total = images.length;
-    let loaded = 0;
+  const images = Array.from(document.querySelectorAll("img"));
+  const total = images.length;
+  let loaded = 0;
 
-    const bumpProgress = () => {
-      loaded += 1;
-      const pct = total === 0 ? 100 : Math.round((loaded / total) * 100);
-      if (!cancelled) setProgress(pct);
-    };
-
-    const imagePromises = images.map((img) => {
-      if (img.complete) {
-        bumpProgress();
-        return Promise.resolve();
-      }
-      return new Promise((resolve) => {
-        img.addEventListener("load", () => {
-          bumpProgress();
-          resolve();
-        });
-        img.addEventListener("error", () => {
-          bumpProgress();
-          resolve(); // don't let a broken image hang the loader forever
-        });
-      });
-    });
-
-    const fontsReady =
-      document.fonts && document.fonts.ready
-        ? document.fonts.ready
-        : Promise.resolve();
-
-    const windowLoaded =
-      document.readyState === "complete"
-        ? Promise.resolve()
-        : new Promise((resolve) => window.addEventListener("load", resolve));
-
-    Promise.all([...imagePromises, fontsReady, windowLoaded]).then(() => {
+  const finish = () => {
+    if (finished || cancelled) return;
+    finished = true;
+    const wait = Math.max(0, MIN_DISPLAY_MS - (Date.now() - startTime));
+    setTimeout(() => {
       if (cancelled) return;
-      const elapsed = Date.now() - startTime;
-      const wait = Math.max(0, MIN_DISPLAY_MS - elapsed);
-      setTimeout(() => {
-        if (!cancelled) setProgress(100);
-        if (!cancelled) setDone(true);
-      }, wait);
-    });
+      setProgress(100);
+      setDone(true);
+    }, wait);
+  };
 
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const bumpProgress = () => {
+    loaded += 1;
+    if (cancelled) return;
+    setProgress(total === 0 ? 100 : Math.round((loaded / total) * 100));
+    if (loaded >= total) finish();
+  };
+
+  images.forEach((img) => {
+    // Lazy images never load until scrolled to; force them to load now
+    img.loading = "eager";
+
+    if (img.complete) {
+      bumpProgress();
+    } else {
+      img.addEventListener("load", bumpProgress, { once: true });
+      img.addEventListener("error", bumpProgress, { once: true });
+    }
+  });
+
+  if (total === 0) finish();
+
+  // Safety net: never let the loader hang, no matter what
+  const timeout = setTimeout(finish, 6000);
+
+  return () => {
+    cancelled = true;
+    clearTimeout(timeout);
+  };
+}, []);
 
   // Animate the counter number smoothly toward the real progress value
   useEffect(() => {
