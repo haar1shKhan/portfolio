@@ -7,10 +7,11 @@ import "../styles/project.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { name: "Shabnam Abaya", img: "./project/img-1.png" },
-  { name: "Bluedart Express Dubai", img: "./project/img-2.png" },
-  { name: "Hr Managament System", img: "./project/img-3.png" },
-  { name: "Volunteer - Online Platform", img: "./project/img-4.png" },
+  // { name: "Shabnam Abaya", img: "./project/img-1.png" },
+  { name: "Bluedart Express Dubai", text:"Business Website", img: "./project/blue-dart-express-dubai.png", link: "https://www.bluedartexpress.ae/" },
+  { name: "Atelier Vayu", text:"E-commerce Platform", img: "./project/atelier-vayu.png", link: "https://atelier-vayu.vercel.app/" },
+  { name: "Ansee Beauty", text:"Human Resources Management", img: "./project/ansee-beauty.png", link: null },
+  { name: "Velvet Pour", text:"Mocktail Bar Website", img: "./project/velvet-pour.png", link: "https://valvet-mojito.vercel.app/" },
 ];
 
 const Spotlight = () => {
@@ -143,19 +144,23 @@ const Spotlight = () => {
               key={i}
               ref={(el) => (projectImagesRef.current[i] = el)}
             >
-              <img src={project.img} alt={project.name} />
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <img src={project.img} alt={project.name} />
+              </a>
             </div>
           ))}
         </div>
 
         <div className="project-names">
           {projects.map((project, i) => (
-            <p
+            <div
+              className="project-name-item"
               key={i}
               ref={(el) => (projectNamesRef.current[i] = el)}
             >
-              {project.name}
-            </p>
+              <p>{project.name}</p>
+              {/* <span className="project-text">{project.text}</span> */}
+            </div>
           ))}
         </div>
       </section>

@@ -26,7 +26,13 @@ const services = [
     title: "SEO",
     description:
       "Search-optimized websites designed to rank, convert, and scale organically.",
-    img: null,
+    img: "seo.jpg",
+  },
+  {
+    title: "Shopify Development",
+    description:
+      "Setup Shopify stores with apps, and payment gateways for e-commerce success.",
+    img: "shopify.png",
   },
 ];
 

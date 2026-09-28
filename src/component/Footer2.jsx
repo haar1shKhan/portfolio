@@ -29,7 +29,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="footer-section">
+    <footer ref={footerRef} className="footer-section" >
 
       {/* Top row — logo + nav */}
       <div className="footer-top">

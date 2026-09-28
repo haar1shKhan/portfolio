@@ -9,6 +9,8 @@ import Service from "./component/Service2"
 import Project from "./component/Project"
 import Contact from './component/Contact2'
 import Footer from './component/Footer2'
+import LoadingScreen from './component/Loadingscreen'
+
 
 
 import gsap from "gsap";
@@ -46,6 +48,7 @@ function App() {
 
   return (
     <div>
+       <LoadingScreen />
      <Navbar/>
      <div id="home" style={{backgroundColor: "#E8E0D0",
       // maxHeight: "800px"
@@ -53,6 +56,7 @@ function App() {
       <Hero/>
      </div>
      <About/>
+     {/* <Certifications/> */}
      <Service/>
      <div style={{position:"relative"}}>
       <Project/>

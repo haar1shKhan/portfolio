@@ -69,10 +69,13 @@
   border-radius: 20px;
   background-color: #1F1409;
   transform-origin: center;
+  mix-blend-mode: difference;
   transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1),
               opacity 0.3s ease;
 }
-
+/* .navbar-on-dark .hamburger span {
+  background-color: #fff;
+} */
 /* X icon when open */
 .hamburger.active span:nth-child(1) {
   transform: translateY(11px) rotate(45deg);

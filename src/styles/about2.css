@@ -1,15 +1,14 @@
 .about{
-    /* background-color: #050505 !important; */
     background: #F5F0E8 ;
     padding: 5rem;
     min-height: max-content;
     height: 100%;
+    overflow-x: hidden;
+    padding-bottom: 0;
 }
 
 .about-content {
   padding: 4rem 0;
-  /* color: #050505; */
-
 }
 
 .about-content h2 {
@@ -17,14 +16,104 @@
   margin-bottom: 1rem;
 }
 
-
+.about-content .accent {
+  color: #FF4D00;
+  font-style: italic;
+}
 
 .about-content p{
     margin-top: 45px;
 }
 
+/* ===========================
+   Image: grows from normal
+   size to fullscreen on scroll
+=========================== */
 
-.stats {
+/* Full-bleed breakout so the wrap can go edge-to-edge regardless of
+   how much padding .about (or any ancestor) has at a given breakpoint */
+.about-image-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.h-panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.horizontal-scroll-wrapper {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  display: flex;
+}
+
+
+.about-image-box {
+  width: 600px;
+  height: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  will-change: width, height, border-radius;
+}
+
+.about-image-box .desk {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark gradient behind the overlay text so it stays readable over the
+   photo. Sits above the image, below the text. Starts invisible — GSAP
+   fades it in once the image is fullscreen. */
+.about-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(15, 15, 18, 0.85) 0%,
+    rgba(15, 15, 18, 0.25) 45%,
+    rgba(15, 15, 18, 0) 70%
+  );
+  pointer-events: none;
+}
+
+/* ===========================
+   Overlay: paragraph + stats
+   sitting on top of the image
+=========================== */
+
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem;
+}
+
+.about-overlay .paragraph {
+  width: 55%;
+  text-align: justify;
+  margin-left: auto;
+  color: #F5F0E8;
+}
+
+.about-overlay .stats {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -32,32 +121,75 @@
   margin-top: 4rem;
 }
 
-.stats h3{
+.about-overlay .stats h3 {
   font-size: 3.5rem;
   color: #FF4D00 ;
   font-weight: bolder;
 }
 
-.stat {
+.about-overlay .stat {
   flex-shrink: 0;
   text-align: center;
   min-width: 250px;
+  color: #F5F0E8;
 }
 
-.desk{
-  width: 600px;
-  /* max-width: 500px; */
-  /* justify-self: center; */
+
+
+/* Add to about2.css */
+.about-certifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3vh;
+  overflow: hidden;           /* stacked/rotated cards never cause sideways scroll */
+}
+
+.cert-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 48px);
+  width: 100%;
+}
+
+.cert-card {
+  flex: 0 0 auto;
+  height: min(52vh, 26vw);    /* portrait cards; landscape one gets wider automatically */
+  will-change: transform;
+}
+
+.cert-card a { display: block; height: 100%; }
+
+.cert-card img {
+  height: 100%;
+  width: auto;
   display: block;
-  border-radius: 18px;
-  margin: 3rem auto 0;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  background: #fff;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  user-select: none;
 }
 
-.paragraph{
-  width: 55%;
-  text-align: justify;
-  margin-left: auto;
-  /* margin-top: 15rem !important; */
+/* hover lives on the img so it doesn't fight GSAP's transform on .cert-card */
+.cert-card img:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 768px) {
+  .cert-row { gap: 10px; }
+  .cert-card { height: min(30vh, 30vw); }
+}
+
+
+.h-panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 /* =========================
@@ -76,16 +208,16 @@
     font-size: 3rem;
   }
 
-  .stats {
+  .about-overlay .stats {
     gap: 3rem;
     justify-content: center;
   }
 
-  .stats h3 {
+  .about-overlay .stats h3 {
     font-size: 3rem;
   }
 
-  .stat {
+  .about-overlay .stat {
     min-width: 220px;
   }
 }
@@ -107,24 +239,28 @@
     line-height: 1.2;
   }
 
-  .about-content p {
-    margin-top: 5rem;
+  .about-overlay {
+    padding: 2rem;
+  }
+
+  .about-overlay .paragraph {
+    width: 100%;
     font-size: 1rem;
     line-height: 1.8;
   }
 
-  .stats {
-    margin-top: 5rem;
-    gap: 4rem;
+  .about-overlay .stats {
+    margin-top: 2.5rem;
+    gap: 2rem;
     justify-content: center;
   }
 
-  .stats h3 {
+  .about-overlay .stats h3 {
     font-size: 2.75rem;
   }
 
-  .stat {
-    min-width: 180px;
+  .about-overlay .stat {
+    min-width: 140px;
   }
 }
 
@@ -145,36 +281,35 @@
     line-height: 1.3;
   }
 
-  .about-content p {
-    margin-top: 20px;
-    font-size: 0.95rem;
-    line-height: 1.8;
+  .about-overlay {
+    padding: 1.5rem;
   }
 
-  .stats {
+  .about-overlay .paragraph {
+    font-size: 0.95rem;
+  }
+
+  .about-overlay .stats {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
   }
 
-  .stats h3 {
+  .about-overlay .stats h3 {
     font-size: 2.5rem;
   }
 
-  .stat {
+  .about-overlay .stat {
     min-width: auto;
     width: 100%;
     max-width: 300px;
   }
-  .desk{
-  width: 350px !important;
-  /* max-width: 500px; */
-  /* justify-self: center; */
-  display: block;
-  border-radius: 18px;
-  margin: 3rem auto 0;
-}
+
+  .about-image-box {
+    width: 320px;
+    height: 256px;
+  }
 }
 
 /* =========================
@@ -185,13 +320,11 @@
     padding: 2rem 1rem;
   }
 
-
-
   .about-content h2 {
     font-size: 1.75rem;
   }
 
-  .stats h3 {
+  .about-overlay .stats h3 {
     font-size: 2rem;
   }
 }

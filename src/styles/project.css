@@ -66,9 +66,24 @@ section{
     align-items: flex-end;
 }
 
+.project-name-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* keeps text right-aligned like before */
+    text-align: right;
+    will-change: transform;
+}
+
 .project-names p{
     /* color: #c7c5c5; */
     color: #1A1A1A;
+    transition: color 0.3 ease;
+}
+
+.project-text{
+    /* color: #c7c5c5; */
+    color: #1A1A1A;
+    font-size: 1rem;
     transition: color 0.3 ease;
 }
 

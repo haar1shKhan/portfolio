@@ -1,7 +1,10 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../styles/navbar2.css";
 import { RibbonCursor } from "./RibbonCursor";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SplitLink = ({ href, children, onClick, addRef }) => {
   const linkRef = useRef(null);
@@ -19,9 +22,7 @@ const SplitLink = ({ href, children, onClick, addRef }) => {
         (e.clientY - charCenterY) ** 2
       );
 
-      // max influence radius — beyond this, no effect
       const radius = 120;
-      // how far the halves split at closest point
       const maxSplit = 55;
 
       const strength = Math.max(0, 1 - dist / radius);
@@ -50,8 +51,7 @@ const SplitLink = ({ href, children, onClick, addRef }) => {
   };
 
   return (
-    
-      <a ref={(el) => {
+    <a ref={(el) => {
         linkRef.current = el;
         if (addRef) addRef(el);
       }}
@@ -88,6 +88,28 @@ const Navbar = () => {
       linksRef.current.push(el);
     }
   };
+
+  // Watches actual page sections tagged data-navbar-theme="dark" and
+  // toggles a class ON the navbar when one is scrolled under it.
+  // Runs once here, not per-link.
+  useEffect(() => {
+    const darkSections = gsap.utils.toArray("[data-navbar-theme='dark']");
+    const navbar = document.querySelector(".navbar");
+
+    const triggers = darkSections.map((section) =>
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 80px",   // navbar height
+        end: "bottom 80px",
+        onEnter: () => navbar.classList.add("navbar-on-dark"),
+        onLeave: () => navbar.classList.remove("navbar-on-dark"),
+        onEnterBack: () => navbar.classList.add("navbar-on-dark"),
+        onLeaveBack: () => navbar.classList.remove("navbar-on-dark"),
+      })
+    );
+
+    return () => triggers.forEach((t) => t.kill());
+  }, []);
 
   useLayoutEffect(() => {
     const circle = circleRef.current;
@@ -164,7 +186,6 @@ const Navbar = () => {
       <header className="navbar">
         <h2 className="logo">HK</h2>
         <div className="nav-actions">
-          
           <a  href="https://wa.me/971569021105"
             className={`btn primary ${isOpen ? "menu-open" : ""}`}
           >
